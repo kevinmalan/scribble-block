@@ -9,7 +9,11 @@
                 Words Count: 
                 {{wordCount}}
             </div>
-
+            <div v-for="key in Object.keys(wordPairs)">
+                <div>
+                    {{key}} : {{wordPairs[key]}}
+                </div>
+            </div>
             <input v-model="words" @keyUp="analyzeWords">
         </div>
 
