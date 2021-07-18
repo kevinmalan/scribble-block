@@ -1,19 +1,23 @@
 var app = new Vue({
     el: '#app',
     data: {
-        wordsCount: 0,
+        wordCount: 0,
         words: ''
     },
     methods: {
-        countWords: function () {
-            var arr = removeEmptyElements(this.words.split(" "));
-            this.wordsCount = arr.length;
+        analyzeWords: function () {
+            var wordArr = getWordArray(this.words);
+            this.wordCount = getWordCount(wordArr);
         }
     }
   })
 
-function removeEmptyElements(arr) {
-    return arr.filter(function(value) {
+function getWordArray(words) {
+    return words.split(" ").filter(function(value) {
         return value != "";
     });
+}
+
+function getWordCount(wordArr) {
+    return wordArr.length;
 }
