@@ -7,7 +7,8 @@ var app = new Vue({
     },
     methods: {
         analyzeWords: function () {
-            var wordArr = getWordArray(this.words);
+            var words = this.words;
+            var wordArr = getWordArray(words.replace(/[.,\/#!$?@#^%\^&\*;:{}=\-_`~()]/g,""));
             this.wordCount = getWordCount(wordArr);
             this.wordPairs = getWordPairs(wordArr);
         }

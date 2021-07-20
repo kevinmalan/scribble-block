@@ -1,20 +1,41 @@
 <html>
     <head>
         <title>Scribble</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Loop">
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./styles.css">
     </head>
-
     <body>
         <div id="app">
-            <div>
-                Words Count: 
-                {{wordCount}}
-            </div>
-            <div v-for="key in Object.keys(wordPairs)">
-                <div>
-                    {{key}} : {{wordPairs[key]}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3"></div>
+                    <div class="col-xl-10 col-lg-8 col-md-6 col-sm-5">
+                        <div id="main-heading">Scribble Block</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6 col-md-8">
+                        <textarea v-model="words" @keyUp="analyzeWords" class="form-control text-block" rows="11"></textarea>
+                    </div>
+                    <div class="col-xl-7 col-lg-6 col-md-4">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                Word Count: 
+                                <span class="badge badge-light">{{wordCount}}</span>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                Word Pairs:
+                                <nav>
+                                    <ul>
+                                        <li v-for="key in Object.keys(wordPairs)"><span class="badge badge-secondary">{{key}} : <span class="badge badge-light">{{wordPairs[key]}}</span></span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <input v-model="words" @keyUp="analyzeWords">
         </div>
 
         <script src="./node_modules/vue/dist/vue.js"></script>
