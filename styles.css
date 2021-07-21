@@ -1,16 +1,17 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 5px;
+    background-color:rgba(245, 240, 240, 0.897);
 }
 
 #main-heading {
-   font-family: "Zen Loop";
+   font-family: "Lobster";
    font-size: 40px;
 }
 
 .text-block {
     width: 470px;
-    font-family: fantasy;
+    font-family: "Raleway";
 }
 
 nav ul {

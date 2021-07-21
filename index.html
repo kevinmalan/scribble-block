@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Scribble</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Loop">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Raleway">
         <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="./styles.css">
     </head>
@@ -16,19 +16,19 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-5 col-lg-6 col-md-8">
-                        <textarea v-model="words" @keyUp="analyzeWords" class="form-control text-block" rows="11"></textarea>
+                        <textarea id="words" v-model="words" @keyUp="analyzeWords" class="form-control text-block" rows="11"></textarea>
                     </div>
                     <div class="col-xl-7 col-lg-6 col-md-4">
                         <div class="row">
                             <div class="col-12">
-                                Word Count: 
+                                Words 
                                 <span class="badge badge-light">{{wordCount}}</span>
                             </div>
-                            <div class="col-12">
-                                Word Pairs:
+                            <div class="col-12" v-if="Object.entries(wordPairs).length">
+                                Glossary
                                 <nav>
                                     <ul>
-                                        <li v-for="key in Object.keys(wordPairs)"><span class="badge badge-secondary">{{key}} : <span class="badge badge-light">{{wordPairs[key]}}</span></span></li>
+                                        <li v-for="key in Object.keys(wordPairs)" v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}} : <span class="badge badge-light">{{wordPairs[key]}}</span></span></li>
                                     </ul>
                                 </nav>
                             </div>

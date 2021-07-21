@@ -3,7 +3,11 @@ var app = new Vue({
     data: {
         words: '',
         wordCount: 0,
-        wordPairs: {}
+        wordPairs: {},
+        highlighted: {
+            previousWord: '',
+            indexAfterWord: -1
+        }
     },
     methods: {
         analyzeWords: function () {
@@ -11,6 +15,30 @@ var app = new Vue({
             var wordArr = getWordArray(words.replace(/[.,\/#!$?@#^%\^&\*;:{}=\-_`~()]/g,""));
             this.wordCount = getWordCount(wordArr);
             this.wordPairs = getWordPairs(wordArr);
+        },
+        highlight: function(word) {
+            var textarea = document.getElementById("words");
+            var index = -1;
+
+            if (this.highlighted.previousWord === word) {
+                var subString = textarea.value.substring(this.highlighted.indexAfterWord);
+                index =  subString.indexOf(word);
+                if (index != -1) {
+                    index += this.highlighted.indexAfterWord;
+                }
+            }
+
+            if (index == -1) {
+                index = textarea.value.indexOf(word);
+            }
+            
+            if (index != -1) {
+                var indexAfterWord = index + word.length;
+                textarea.focus();
+                textarea.setSelectionRange(index, indexAfterWord);
+                this.highlighted.previousWord = word;
+                this.highlighted.indexAfterWord = indexAfterWord;
+            }
         }
     }
   })
