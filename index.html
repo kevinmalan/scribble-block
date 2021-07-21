@@ -9,32 +9,32 @@
         <div id="app">
             <div class="container">
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <div id="main-heading">Scribble Block</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Words 
+                        <span class="badge badge-light">{{wordCount}}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-5 col-lg-6 col-md-8">
                         <textarea id="words" v-model="words" @keyUp="analyzeWords" class="form-control text-block" rows="11"></textarea>
                     </div>
-                    <div class="col-xl-7 col-lg-6 col-md-4">
-                        <div class="row">
-                            <div class="col-12">
-                                Words 
-                                <span class="badge badge-light">{{wordCount}}</span>
-                            </div>
-                            <div class="col-12" v-if="Object.entries(wordPairs).length">
-                                Glossary
-                                <nav>
-                                    <ul>
-                                        <li v-for="key in Object.keys(wordPairs)" v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}} : <span class="badge badge-light">{{wordPairs[key]}}</span></span></li>
-                                    </ul>
-                                </nav>
-                            </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-12" v-if="Object.entries(wordPairs).length">
+                        Glossary
+                        <div class="scrollmenu text-block">
+                            <a v-for="key in Object.keys(wordPairs)" v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}} : <span class="badge badge-light">{{wordPairs[key]}}</span></span></a>
                         </div>
                     </div>
                 </div>
+                <br/>
+                <br/>
             </div>
         </div>
 
