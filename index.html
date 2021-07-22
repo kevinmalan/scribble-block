@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
     <head>
         <title>Scribble</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Raleway">
@@ -29,7 +29,10 @@
                     <div class="col-12" v-if="Object.entries(wordPairs).length">
                         Glossary
                         <div class="scrollmenu text-block">
-                            <a v-for="key in Object.keys(wordPairs)" v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}} : <span class="badge badge-light">{{wordPairs[key]}}</span></span></a>
+                            <span v-for="(key, index) in Object.keys(wordPairs)">
+                                <a v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}} <span class="badge badge-light">{{wordPairs[key]}}</span></span></a>
+                                <br v-if="index !== 0 && index % 6 === 0">
+                            </span>
                         </div>
                     </div>
                 </div>

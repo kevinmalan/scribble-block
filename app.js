@@ -36,6 +36,7 @@ var app = new Vue({
                 var indexAfterWord = index + word.length;
                 textarea.focus();
                 textarea.setSelectionRange(index, indexAfterWord);
+                textarea.scrollTop = indexAfterWord / 2;
                 this.highlighted.previousWord = word;
                 this.highlighted.indexAfterWord = indexAfterWord;
             }
