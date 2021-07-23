@@ -21,6 +21,7 @@ var app = new Vue({
         },
         load: function () {
             this.words = window.localStorage.getItem('words-1');
+            this.analyzeWords();
         },
         highlight: function(word) {
             var textarea = document.getElementById("words");
