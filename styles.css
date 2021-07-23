@@ -15,6 +15,19 @@ body {
     font-family: "Raleway";
 }
 
+#save-load-cta {
+  margin-top: 5pt;
+  margin-left: 4pt;
+}
+
+#btn-save {
+  background-color: #a6aaa5;
+}
+
+#btn-load {
+  background-color: #5f635e;
+}
+
 /* Horizontal Scroll Bar */
 div.scrollmenu {
     background-color: #333;

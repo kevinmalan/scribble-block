@@ -16,6 +16,12 @@ var app = new Vue({
             this.wordCount = getWordCount(wordArr);
             this.wordPairs = getWordPairs(wordArr);
         },
+        save: function () {
+            window.localStorage.setItem('words-1', this.words);
+        },
+        load: function () {
+            this.words = window.localStorage.getItem('words-1');
+        },
         highlight: function(word) {
             var textarea = document.getElementById("words");
             var index = -1;
@@ -32,14 +38,12 @@ var app = new Vue({
                 index = textarea.value.indexOf(word);
             }
             
-            if (index != -1) {
-                var indexAfterWord = index + word.length;
-                textarea.focus();
-                textarea.setSelectionRange(index, indexAfterWord);
-                textarea.scrollTop = indexAfterWord / 2;
-                this.highlighted.previousWord = word;
-                this.highlighted.indexAfterWord = indexAfterWord;
-            }
+            var indexAfterWord = index + word.length;
+            textarea.focus();
+            textarea.setSelectionRange(index, indexAfterWord);
+            textarea.scrollTop = indexAfterWord / 2;
+            this.highlighted.previousWord = word;
+            this.highlighted.indexAfterWord = indexAfterWord;
         }
     }
   })

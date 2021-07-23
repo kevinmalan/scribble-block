@@ -24,6 +24,10 @@
                         <textarea id="words" v-model="words" @keyUp="analyzeWords" class="form-control text-block" rows="11"></textarea>
                     </div>
                 </div>
+                <div id="save-load-cta" class="row">
+                    <button v-on:click="save()" id="btn-save" class="btn btn-success mr-1">Save</button>
+                    <button v-on:click="load()" id="btn-load" class="btn btn-info">Load</button>
+                </div>
                 <br/>
                 <div class="row">
                     <div class="col-12" v-if="Object.entries(wordPairs).length">
