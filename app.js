@@ -12,7 +12,7 @@ var app = new Vue({
     },
     methods: {
         analyzeWords: function () {
-            var words = this.words.replace("\n", " ").replace("\t", " ");
+            var words = this.words.toLowerCase().replace("\n", " ").replace("\t", " ");
             var wordArr = getWordArray(words.replace(/[.,\/#!$?@#^%\^&\*;:{}=\-_`~()]/g, ""));
             this.wordCount = getWordCount(wordArr);
             this.wordPairs = getWordPairs(wordArr);
@@ -21,7 +21,6 @@ var app = new Vue({
             window.localStorage.setItem('words-1', this.words);
         },
         load: function () {
-
             this.words = window.localStorage.getItem('words-1');
             this.analyzeWords();
         },
@@ -74,13 +73,18 @@ function getWordPairs(wordArr) {
     });
 
     var wordPairsSorted = sortObjectByValueDescending(wordPairs);
+    var wordPairArr = splitIntoMultipleObjectsArray(23, wordPairsSorted);
 
+    return wordPairArr;
+}
+
+function splitIntoMultipleObjectsArray(maxKeysLength, wordPairsSorted) {
     var wordPairArr = [];
     var index = 0;
     var rowLength = 0;
     for (key in wordPairsSorted) {
         rowLength += key.length;
-        if (rowLength > 23) {
+        if (rowLength > maxKeysLength) {
             index++;
             rowLength = 0;
         }
