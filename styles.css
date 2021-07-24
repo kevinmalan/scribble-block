@@ -15,8 +15,8 @@ body {
     font-family: "Raleway";
 }
 
-#save-load-cta {
-  margin-top: 5pt;
+.bottom-section {
+  margin-top: 10pt;
   margin-left: 4pt;
 }
 

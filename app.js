@@ -11,7 +11,7 @@ var app = new Vue({
     },
     methods: {
         analyzeWords: function () {
-            var words = this.words;
+            var words = this.words.replace("\n", " ").replace("\t", " ");
             var wordArr = getWordArray(words.replace(/[.,\/#!$?@#^%\^&\*;:{}=\-_`~()]/g,""));
             this.wordCount = getWordCount(wordArr);
             this.wordPairs = getWordPairs(wordArr);
@@ -20,6 +20,7 @@ var app = new Vue({
             window.localStorage.setItem('words-1', this.words);
         },
         load: function () {
+
             this.words = window.localStorage.getItem('words-1');
             this.analyzeWords();
         },
@@ -51,7 +52,7 @@ var app = new Vue({
 
 function getWordArray(words) {
     return words.split(" ").filter(function(value) {
-        return value != "";
+        return value != "" && isNaN(value);
     });
 }
 
@@ -80,7 +81,6 @@ function sortObjectByValueDescending(obj) {
    });
 
    var objSorted = {};
-
    for (key of keysSortedByValueArr) {
     objSorted[key] = obj[key];
    }
