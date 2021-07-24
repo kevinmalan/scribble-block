@@ -39,7 +39,7 @@
                         <caption style='display:none;'>CUP free search box</caption>
                         <tbody>
                             <tr>
-                                <td> <input class="form-control" name='q' placeholder="Cambridge Dictionary" /> </td>
+                                <td> <input v-model="search" class="form-control" name='q' placeholder="Cambridge Dictionary" /> </td>
                                 <td> <input class="btn btn-info" type='submit' value='Look it up' /> </td>
                             </tr>
                         </tbody>
@@ -53,8 +53,8 @@
                     <div class="scrollmenu text-block">
                         <div v-for="obj in wordPairs">
                             <span v-for="(key, index) in Object.keys(obj)">
-                                <a v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}} <span
-                                            class="badge badge-light">{{obj[key]}}</span></span></a>
+                                <a v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}}
+                                        <span class="badge badge-light">{{obj[key]}}</span></span></a>
                             </span>
                             <br />
                         </div>

@@ -4,6 +4,7 @@ var app = new Vue({
         words: '',
         wordCount: 0,
         wordPairs: {},
+        search: '',
         highlighted: {
             previousWord: '',
             indexAfterWord: -1
@@ -25,6 +26,7 @@ var app = new Vue({
             this.analyzeWords();
         },
         highlight: function (word) {
+            this.search = word;
             var textarea = document.getElementById("words");
             var index = -1;
 
