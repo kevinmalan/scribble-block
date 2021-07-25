@@ -73,7 +73,7 @@ function getWordPairs(wordArr) {
     });
 
     var wordPairsSorted = sortObjectByValueDescending(wordPairs);
-    var wordPairArr = splitIntoMultipleObjectsArray(23, wordPairsSorted);
+    var wordPairArr = splitIntoMultipleObjectsArray(50, wordPairsSorted);
 
     return wordPairArr;
 }

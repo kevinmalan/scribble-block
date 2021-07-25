@@ -11,59 +11,68 @@
     <div id="app">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div id="main-heading">Scribble Block</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    Words
-                    <span class="badge badge-light">{{wordCount}}</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-5 col-lg-6 col-md-8">
-                    <textarea id="words" v-model="words" @keyUp="analyzeWords" class="form-control text-block"
-                        rows="11"></textarea>
-                </div>
-            </div>
-            <div class="row bottom-section">
-                <button v-on:click="save()" id="btn-save" class="btn btn-success mr-1">Save</button>
-                <button v-on:click="load()" id="btn-load" class="btn btn-info mr-1">Load</button>
-            </div>
-            <div class="row bottom-section">
-                <form
-                    action='https://dictionary.cambridge.org/search/english/direct/?utm_source=widget_searchbox_source&utm_medium=widget_searchbox&utm_campaign=widget_tracking'
-                    method='get' target="_blank">
-                    <table style='font-size:10px;background:#292929;border-collapse:collapse;border-spacing:0;'>
-                        <caption style='display:none;'>CUP free search box</caption>
-                        <tbody>
-                            <tr>
-                                <td> <input v-model="search" class="form-control" name='q' placeholder="Cambridge Dictionary" /> </td>
-                                <td> <input class="btn btn-info" type='submit' value='Look it up' /> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-12" v-if="Object.entries(wordPairs).length">
-                    Glossary
-                    <div class="scrollmenu text-block">
-                        <div v-for="obj in wordPairs">
-                            <span v-for="(key, index) in Object.keys(obj)">
-                                <a v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}}
-                                        <span class="badge badge-light">{{obj[key]}}</span></span></a>
-                            </span>
-                            <br />
+                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="main-heading">Scribble Block</div>
                         </div>
-
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="labels">Words</span>
+                            <span class="badge badge-light">{{wordCount}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-6 col-md-8">
+                            <textarea id="words" v-model="words" @keyUp="analyzeWords" class="form-control text-block"
+                                rows="20"></textarea>
+                        </div>
+                    </div>
+                    <div class="row bottom-section">
+                        <button v-on:click="save()" id="btn-save" class="btn mr-1">Save</button>
+                        <button v-on:click="load()" id="btn-load" class="btn">Load</button>
+                        <div class="col-7"></div>
+                        <div class="col-md-2">
+                            <form
+                                action='https://dictionary.cambridge.org/search/english/direct/?utm_source=widget_searchbox_source&utm_medium=widget_searchbox&utm_campaign=widget_tracking'
+                                method='get' target="_blank">
+                                <table
+                                    style='font-size:10px;background:#292929;border-collapse:collapse;border-spacing:0;'>
+                                    <caption style='display:none;'>CUP free search box</caption>
+                                    <tbody>
+                                        <tr>
+                                            <td> <input id="input-lookup" v-model="search" class="form-control" name='q'
+                                                    placeholder="Cambridge Dictionary" /> </td>
+                                            <td> <input id="btn-lookup" class="btn" type='submit' value='Look it up' />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-12" v-if="Object.entries(wordPairs).length">
+                            <span class="labels">Glossary</span>
+                            <div class="scrollmenu text-block">
+                                <div v-for="obj in wordPairs">
+                                    <span v-for="(key, index) in Object.keys(obj)">
+                                        <a v-on:click="highlight(key)"><span class="badge badge-secondary">{{key}}
+                                                <span class="badge badge-light">{{obj[key]}}</span></span></a>
+                                    </span>
+                                    <br />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
                 </div>
             </div>
-            <br />
-            <br />
         </div>
     </div>
     <script src="./node_modules/axios/dist/axios.min.js"></script>

@@ -1,31 +1,59 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 5px;
-    background-color:rgba(245, 240, 240, 0.897);
+    background-color:#4d4e4d;
 }
 
 #main-heading {
    font-family: "Lobster";
    font-size: 40px;
-   color: #5fda2f;
+   color: #ffffff;
 }
 
-.text-block {
-    width: 430px;
+.text-block, .text-block:focus {
+    width: 900px;
+    background-color: rgb(88, 87, 87);
+    color: #ffffff;
+    font-size: 15pt;
     font-family: "Raleway";
 }
+
 
 .bottom-section {
   margin-top: 10pt;
   margin-left: 4pt;
 }
 
+
 #btn-save {
-  background-color: #a6aaa5;
+  height: 40px;
+  width: 70px;
+  color: white;
+  background-color: #1d1c1c;
 }
 
 #btn-load {
-  background-color: #5f635e;
+  height: 40px;
+  width: 70px;
+  color: #000000;
+  background-color: #d9e625;
+}
+
+#input-lookup {
+  height: 40px;
+  width: 200px;
+}
+
+#btn-lookup {
+  height: 40px;
+  width: 100px;
+  color: #000000;
+  background-color: #d9e625;
+}
+
+.labels {
+  font-size: 18pt;
+  color: white;
 }
 
 /* Horizontal Scroll Bar */
